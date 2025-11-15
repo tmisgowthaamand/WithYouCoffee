@@ -27,5 +27,6 @@
   },
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
-  }
+  },
+  "CodeGPT.apiKey": ""
 }
