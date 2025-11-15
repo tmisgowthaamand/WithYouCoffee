@@ -1,4 +1,4 @@
-# CupTime — Full Project Scaffold
+# WITH YOU COFFEE — Full Project Scaffold
 
 This canvas contains a **ready-to-run** full-stack scaffold for the CupTime-inspired site you asked for. It includes a React + Vite + Tailwind frontend and a simple Node.js + Express mock backend (with in-memory data) so you can run and test product listing, cart, and order flows locally.
 
@@ -9,7 +9,7 @@ This canvas contains a **ready-to-run** full-stack scaffold for the CupTime-insp
 ## Project structure
 
 ```
-cuptime-clone/
+withyoucoffee-clone/
 ├─ frontend/
 │  ├─ package.json
 │  ├─ vite.config.js
@@ -43,7 +43,7 @@ cuptime-clone/
 
 ## README — how to run locally
 
-1. Clone the project and `cd cuptime-clone`.
+1. Clone the project and `cd Withyoucoffee-clone`.
 2. Start backend:
    - `cd backend` 
    - `npm install` 
