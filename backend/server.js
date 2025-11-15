@@ -10,7 +10,14 @@ const app = express()
 
 // Configure CORS properly
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173'], // React dev servers
+  origin: function (origin, callback) {
+    // Allow localhost for development
+    if (!origin || origin.includes('localhost') || origin.includes('127.0.0.1')) {
+      return callback(null, true)
+    }
+    // Allow all origins in production (or specify your Vercel domain)
+    callback(null, true)
+  },
   credentials: true
 }))
 
