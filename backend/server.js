@@ -17,6 +17,21 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ extended: true }))
 
+// Simple root health/info endpoint so Render root URL shows a JSON message
+app.get('/', (req, res) => {
+  res.json({
+    service: 'With You Coffee Backend API',
+    status: 'healthy',
+    message: 'Backend is running successfully',
+    version: '1.0.0',
+    endpoints: {
+      products: '/api/products',
+      orders: '/api/orders',
+      contact: '/api/contact',
+    },
+  })
+})
+
 // --- Orders persistence (simple JSON storage) ---
 const ordersFilePath = path.join(__dirname, 'data', 'orders.json')
 
