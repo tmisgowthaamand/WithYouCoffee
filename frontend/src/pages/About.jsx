@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { apiUrl } from '../config/api'
 
 export default function About() {
   const [formData, setFormData] = useState({
@@ -89,10 +90,7 @@ export default function About() {
 
     try {
       // API URL - change this to your production URL when deploying
-      const API_URL = 'http://localhost:4000'
-      
-      // Send data to backend API
-      const response = await fetch(`${API_URL}/api/contact`, {
+      const response = await fetch(apiUrl('/api/contact'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

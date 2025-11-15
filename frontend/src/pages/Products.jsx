@@ -4,13 +4,14 @@ import Footer from '../components/Footer'
 import ProductCard from '../components/ProductCard'
 import { useCart } from '../context/CartContext'
 import axios from 'axios'
+import { apiUrl } from '../config/api'
 
 export default function Products() {
   const [products, setProducts] = useState([])
   const { addToCart } = useCart()
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/products')
+    axios.get(apiUrl('/api/products'))
       .then(res => setProducts(res.data))
       .catch(() => setProducts([]))
   }, [])

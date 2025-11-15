@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { apiUrl } from '../config/api'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -17,8 +18,7 @@ export default function Admin() {
   const fetchContactRequests = async () => {
     try {
       setLoading(true)
-      const API_URL = 'http://localhost:4000'
-      const response = await fetch(`${API_URL}/api/contact`)
+      const response = await fetch(apiUrl('/api/contact'))
       const data = await response.json()
       
       if (data.success) {
@@ -57,8 +57,7 @@ export default function Admin() {
 
   const updateStatus = async (id, newStatus) => {
     try {
-      const API_URL = 'http://localhost:4000'
-      const response = await fetch(`${API_URL}/api/contact/${id}`, {
+      const response = await fetch(apiUrl(`/api/contact/${id}`), {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
