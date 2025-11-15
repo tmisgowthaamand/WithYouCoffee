@@ -28,5 +28,5 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "CodeGPT.apiKey": ""
+  "CodeGPT.apiKey": "Perplexity"
 }
