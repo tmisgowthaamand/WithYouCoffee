@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useCart } from '../context/CartContext'
+import { apiUrl } from '../config/api'
 
 export default function Checkout() {
   const navigate = useNavigate()
@@ -60,8 +61,7 @@ export default function Checkout() {
         paymentMethod
       }
 
-      const API_URL = 'http://localhost:4000'
-      const response = await fetch(`${API_URL}/api/orders`, {
+      const response = await fetch(apiUrl('/api/orders'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

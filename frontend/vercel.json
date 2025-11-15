@@ -6,6 +6,8 @@
   "env": {
     "VITE_API_BASE_URL": "https://withyoucoffee.onrender.com"
   },
+  "cleanUrls": true,
+  "trailingSlash": false,
   "routes": [
     {
       "src": "/assets/(.*)",
@@ -15,9 +17,15 @@
       }
     },
     {
+      "src": "/images/(.*)",
+      "dest": "/images/$1",
+      "headers": {
+        "cache-control": "public, max-age=604800"
+      }
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html",
-      "status": 200
+      "dest": "/index.html"
     }
   ]
 }
