@@ -1,0 +1,192 @@
+[
+  {
+    "id": "taoGbELmvK",
+    "customerInfo": {
+      "name": "Gowthaaman",
+      "email": "admin@gmail.com",
+      "phone": "08903162114",
+      "address": "No:19,Anjeneyar Kovil street,Seliamedu, Pondicherry",
+      "city": "Pondicherry",
+      "pincode": "607402"
+    },
+    "items": [
+      {
+        "id": "p1",
+        "name": "Hot Tea",
+        "price": 40,
+        "description": "Our Hot Tea is brewed fresh with quality tea leaves and dry ginger. A perfect blend to keep you refreshed and energized throughout the day.",
+        "image": "/images/products/tea_mfgnbt.png",
+        "category": "Tea",
+        "popular": true,
+        "sizes": [
+          "250ml",
+          "500ml",
+          "1000ml Flask"
+        ],
+        "options": [
+          "With/Without Sugar"
+        ],
+        "features": [
+          "Served Hot",
+          "No Chemicals"
+        ],
+        "badge": "Top Choice",
+        "quantity": 1
+      }
+    ],
+    "subtotal": 40,
+    "gst": 2,
+    "total": 42,
+    "paymentMethod": "upi",
+    "status": "confirmed",
+    "history": [
+      {
+        "status": "confirmed",
+        "at": "2025-11-14T09:58:38.328Z"
+      }
+    ],
+    "createdAt": "2025-11-14T09:58:38.328Z"
+  },
+  {
+    "id": "0SSsGD20d6",
+    "customerInfo": {
+      "name": "Gowthaaman D",
+      "email": "gowthaamaneswar98@gmail.com",
+      "phone": "07010905730",
+      "address": "No. 7A, Anna Salai\n12",
+      "city": "Chennai",
+      "pincode": "600002"
+    },
+    "items": [
+      {
+        "id": "p2",
+        "name": "Filter Coffee",
+        "price": 45,
+        "description": "Brewed with fresh milk and our signature blend, our Filter Coffee delivers the true South Indian taste — strong, smooth, and satisfying.",
+        "image": "/images/products/coffee_fmzzco.png",
+        "category": "Coffee",
+        "popular": true,
+        "sizes": [
+          "250ml",
+          "500ml",
+          "1000ml Flask"
+        ],
+        "options": [
+          "With/Without Sugar"
+        ],
+        "features": [
+          "Served Hot",
+          "No Chemicals"
+        ],
+        "quantity": 1
+      }
+    ],
+    "subtotal": 45,
+    "gst": 2.25,
+    "total": 47.25,
+    "paymentMethod": "cash_on_delivery",
+    "status": "confirmed",
+    "history": [
+      {
+        "status": "confirmed",
+        "at": "2025-11-14T10:03:31.794Z"
+      }
+    ],
+    "createdAt": "2025-11-14T10:03:31.794Z"
+  },
+  {
+    "id": "I6gTWh9udU",
+    "customerInfo": {
+      "name": "Gowthaaman D",
+      "email": "gowthaamaneswar98@gmail.com",
+      "phone": "07010905730",
+      "address": "No. 7A, Anna Salai\n12",
+      "city": "Chennai",
+      "pincode": "600002"
+    },
+    "items": [
+      {
+        "id": "p1",
+        "name": "Hot Tea",
+        "price": 40,
+        "description": "Our Hot Tea is brewed fresh with quality tea leaves and dry ginger. A perfect blend to keep you refreshed and energized throughout the day.",
+        "image": "/images/products/tea_mfgnbt.png",
+        "category": "Tea",
+        "popular": true,
+        "sizes": [
+          "250ml",
+          "500ml",
+          "1000ml Flask"
+        ],
+        "options": [
+          "With/Without Sugar"
+        ],
+        "features": [
+          "Served Hot",
+          "No Chemicals"
+        ],
+        "badge": "Top Choice",
+        "quantity": 1
+      }
+    ],
+    "subtotal": 40,
+    "gst": 2,
+    "total": 42,
+    "paymentMethod": "cash_on_delivery",
+    "status": "confirmed",
+    "history": [
+      {
+        "status": "confirmed",
+        "at": "2025-11-15T06:08:34.818Z"
+      }
+    ],
+    "createdAt": "2025-11-15T06:08:34.818Z"
+  },
+  {
+    "id": "bQM67Caq51",
+    "customerInfo": {
+      "name": "harish",
+      "email": "gokrishna98@gmail.com",
+      "phone": "7010905730",
+      "address": "No. 7A, Anna Salai\n12",
+      "city": "Chennai",
+      "pincode": "600002"
+    },
+    "items": [
+      {
+        "id": "p2",
+        "name": "Filter Coffee",
+        "price": 45,
+        "description": "Brewed with fresh milk and our signature blend, our Filter Coffee delivers the true South Indian taste — strong, smooth, and satisfying.",
+        "image": "/images/products/coffee_fmzzco.png",
+        "category": "Coffee",
+        "popular": true,
+        "sizes": [
+          "250ml",
+          "500ml",
+          "1000ml Flask"
+        ],
+        "options": [
+          "With/Without Sugar"
+        ],
+        "features": [
+          "Served Hot",
+          "No Chemicals"
+        ],
+        "quantity": 1
+      }
+    ],
+    "subtotal": 45,
+    "gst": 2.25,
+    "total": 47.25,
+    "paymentMethod": "upi",
+    "status": "confirmed",
+    "history": [
+      {
+        "status": "confirmed",
+        "at": "2025-11-15T06:33:01.551Z"
+      }
+    ],
+    "createdAt": "2025-11-15T06:33:01.551Z"
+  }
+]

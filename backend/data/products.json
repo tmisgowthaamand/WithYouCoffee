@@ -1,0 +1,92 @@
+[
+  { 
+    "id": "p1", 
+    "name": "Hot Tea", 
+    "price": 40, 
+    "description": "Our Hot Tea is brewed fresh with quality tea leaves and dry ginger. A perfect blend to keep you refreshed and energized throughout the day.",
+    "image": "/images/products/tea_mfgnbt.png",
+    "category": "Tea",
+    "popular": true,
+    "sizes": ["250ml", "500ml", "1000ml Flask"],
+    "options": ["With/Without Sugar"],
+    "features": ["Served Hot", "No Chemicals"],
+    "badge": "Top Choice"
+  },
+  { 
+    "id": "p2", 
+    "name": "Filter Coffee", 
+    "price": 45, 
+    "description": "Brewed with fresh milk and our signature blend, our Filter Coffee delivers the true South Indian taste — strong, smooth, and satisfying.",
+    "image": "/images/products/coffee_fmzzco.png",
+    "category": "Coffee",
+    "popular": true,
+    "sizes": ["250ml", "500ml", "1000ml Flask"],
+    "options": ["With/Without Sugar"],
+    "features": ["Served Hot", "No Chemicals"]
+  },
+  { 
+    "id": "p3", 
+    "name": "Rose Milk", 
+    "price": 50, 
+    "description": "Cup Time's Cold Rose Milk is a perfect fusion of chilled milk, natural rose essence, and a touch of real rose petals.",
+    "image": "/images/products/rose-milk_igf7hf.png",
+    "category": "Milk",
+    "popular": false,
+    "sizes": ["500ml", "1000ml Flask"],
+    "features": ["No Chemicals"]
+  },
+  { 
+    "id": "p4", 
+    "name": "Sugar Juice", 
+    "price": 55, 
+    "description": "Cup Time's Sugar Juice is a warm, wholesome drink made by blending fresh hot milk with natural sugar cane extracts.",
+    "image": "/images/products/sugar-juice_d18lvy.png",
+    "category": "Milk",
+    "popular": false,
+    "sizes": ["500ml", "1000ml Flask"],
+    "features": ["No Chemicals"]
+  },
+  { 
+    "id": "p5", 
+    "name": "Karupatti Sukku Coffee", 
+    "price": 48, 
+    "description": "Karupatti Sukku Coffee is a traditional South Indian wellness drink made with karupatti (palm jaggery) and sukku (dry ginger) — served hot and without milk.",
+    "image": "/images/products/sukku-kappi_s2b4j1.png",
+    "category": "Coffee",
+    "popular": true,
+    "sizes": ["250ml", "500ml", "1000ml Flask"],
+    "features": ["Served Hot", "No Chemicals", "Traditional Recipe"]
+  },
+  { 
+    "id": "p6", 
+    "name": "Strawberry Thick Shake", 
+    "price": 60, 
+    "description": "Creamy strawberry thick shake made with fresh strawberries, rich milk, and natural sweeteners for the perfect indulgent treat.",
+    "image": "/images/products/berry-milk_xalvrn.png",
+    "category": "Shake",
+    "popular": true,
+    "sizes": ["500ml", "1000ml Flask"],
+    "features": ["Fresh Fruits", "No Artificial Colors"]
+  },
+  { 
+    "id": "p7", 
+    "name": "Palm Choco Thick Shake", 
+    "price": 65, 
+    "description": "Rich and creamy palm chocolate thick shake blended with natural palm jaggery and premium cocoa for an authentic South Indian dessert experience.",
+    "image": "/images/products/pana-milk_jcc2sy.png",
+    "category": "Shake",
+    "popular": false,
+    "sizes": ["500ml", "1000ml Flask"],
+    "features": ["Natural Palm Jaggery", "Premium Cocoa"]
+  },
+  { 
+    "id": "p8", 
+    "name": "Regional Snacks", 
+    "price": 35, 
+    "description": "We celebrate local flavors with our handpicked selection of regional snacks — freshly sourced, authentically made and perfectly paired with your favourite hot beverages.",
+    "image": "/images/products/regionalSnacks_rh5vxe.png",
+    "category": "Snacks",
+    "popular": false,
+    "features": ["Spicy/Sweet", "No Chemicals", "Locally Sourced"]
+  }
+]
