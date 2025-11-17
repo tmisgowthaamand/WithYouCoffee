@@ -81,6 +81,29 @@ export default function Delivery() {
             <p className="mt-4 text-sm text-gray-400">© 2025 J K Enterprises. All Rights Reserved.</p>
           </div>
         </div>
+
+        {/* Partnership Section */}
+        <div className="mt-12 bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 md:p-10 shadow-2xl">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Want to Partner or Franchise with Us?</h2>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+              <Link
+                to="/franchise"
+                className="px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors text-center cursor-pointer"
+              >
+                Join as Franchisee
+              </Link>
+              <Link
+                to="/contact"
+                className="px-6 py-3 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-center cursor-pointer"
+              >
+                Order for Your Business
+              </Link>
+            </div>
+          </div>
+        </div>
       </main>
       <Footer />
     </div>

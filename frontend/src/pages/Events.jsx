@@ -13,7 +13,7 @@ export default function Events() {
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
             <span className="block bg-gradient-to-r from-purple-200 via-pink-200 to-purple-300 bg-clip-text text-transparent animate-textStagger">
-              CupTime
+              With You Coffee
             </span>
             <span className="block bg-gradient-to-r from-amber-200 via-orange-200 to-amber-300 bg-clip-text text-transparent mt-2 animate-textStagger" style={{animationDelay: '0.2s'}}>
               Events
@@ -42,7 +42,7 @@ export default function Events() {
                     <span className="px-4 py-2 bg-white/20 rounded-full text-sm font-bold">Featured Event</span>
                     <span className="text-amber-100">Dec 15, 2025</span>
                   </div>
-                  <h3 className="text-3xl font-bold mb-4">CupTime Coffee Festival 2025</h3>
+                  <h3 className="text-3xl font-bold mb-4">With You Coffee Festival 2025</h3>
                   <p className="text-lg text-amber-100 mb-6">
                     Join us for the biggest coffee celebration of the year! Experience live brewing demonstrations, 
                     taste exclusive blends, meet coffee experts, and enjoy cultural performances.
@@ -105,7 +105,7 @@ export default function Events() {
                   </div>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  Connect with existing franchise partners, share experiences, and learn about new opportunities in the CupTime network.
+                  Connect with existing franchise partners, share experiences, and learn about new opportunities in the With You Coffee network.
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-blue-600 font-medium">Mumbai Office</span>
@@ -147,7 +147,7 @@ export default function Events() {
                   </div>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  Special discounts, free samples, and exclusive offers for our loyal customers. Celebrate with us across all CupTime locations.
+                  Special discounts, free samples, and exclusive offers for our loyal customers. Celebrate with us across all With You Coffee locations.
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-pink-600 font-medium">All Locations</span>

@@ -24,9 +24,7 @@ export default function Technology() {
                 <div className="w-64 h-96 bg-gray-800 rounded-3xl p-2 shadow-2xl">
                   <div className="w-full h-full bg-white rounded-2xl flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white text-2xl font-bold">CT</span>
-                      </div>
+                      <img src="/images/browser title.gif" alt="With You Coffee" className="w-24 h-24 mx-auto mb-4 object-contain" />
                       <div className="text-sm text-gray-600 mb-2">With You Coffee App</div>
                       <div className="text-xs text-gray-400">Order • Track • Enjoy</div>
                     </div>

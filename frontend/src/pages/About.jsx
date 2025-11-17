@@ -22,7 +22,7 @@ export default function About() {
 
   // Contact Information State - Easy to update
   const [contactInfo, setContactInfo] = useState({
-    businessName: 'Cup Time',
+    businessName: 'With You Coffee',
     address: {
       line1: 'Soroco House,',
       line2: 'Anna Nagar,',
@@ -30,8 +30,8 @@ export default function About() {
       pincode: ''
     },
     emails: {
-      franchise: 'franchise@cuptime.in',
-      general: 'reach@cuptime.in'
+      franchise: 'franchise@withyoucoffee.in',
+      general: 'reach@withyoucoffee.in'
     },
     phone: '+91 915 916 1110',
     mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.2123456789!2d80.2123456!3d13.0827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526650e0b6c595%3A0x4f74ddbff946af6b!2sSoroco%20House!5e0!3m2!1sen!2sin!4v1699876543210!5m2!1sen!2sin'
@@ -688,12 +688,12 @@ export default function About() {
               </div>
 
               {/* Contact Information */}
-              <div className="bg-white rounded-2xl p-6 shadow-lg animate-slideInScale stagger-3">
+              <div className="bg-white rounded-2xl p-6 shadow-lg animate-slideInScale stagger-3 relative z-20 pointer-events-auto">
                 <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
                   <span className="text-red-500 mr-2">📍</span>
                   Contact Us
                 </h4>
-                <div className="space-y-3 text-sm text-gray-600">
+                <div className="space-y-3 text-sm text-gray-600 relative z-20 pointer-events-auto">
                   <p>
                     <strong>Address:</strong><br />
                     {contactInfo.address.line1}<br />
@@ -723,11 +723,11 @@ export default function About() {
                       {contactInfo.emails.general}
                     </a>
                   </p>
-                  <p>
+                  <p className="relative z-20 pointer-events-auto">
                     <strong>Phone:</strong><br />
                     <a 
                       href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
-                      className="text-red-500 hover:text-red-600 transition-colors"
+                      className="text-red-500 hover:text-red-600 transition-colors relative z-40 pointer-events-auto cursor-pointer underline block"
                     >
                       {contactInfo.phone}
                     </a>

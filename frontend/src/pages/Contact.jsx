@@ -55,14 +55,14 @@ export default function Contact() {
                       <div className="w-8 h-8 rounded-xl bg-amber-500/90 flex items-center justify-center text-white text-sm">📞</div>
                       <div>
                         <p className="text-xs text-gray-300">Phone & WhatsApp</p>
-                        <p className="text-sm font-medium text-gray-100">+91 915 916 1110</p>
+                        <a href="tel:+919159161110" className="text-sm font-medium text-gray-100 hover:text-amber-300 underline relative z-30 pointer-events-auto cursor-pointer">+91 915 916 1110</a>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-xl bg-amber-500/90 flex items-center justify-center text-white text-sm">✉️</div>
                       <div>
                         <p className="text-xs text-gray-300">Email</p>
-                        <a href="mailto:reach@cuptime.in" className="text-sm font-medium text-gray-100 hover:text-amber-300 underline relative z-30 pointer-events-auto cursor-pointer">reach@cuptime.in</a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=reach@cuptime.in" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-gray-100 hover:text-amber-300 relative z-30 pointer-events-auto cursor-pointer">reach@withyoucoffee.in</a>
                       </div>
                     </div>
                   </div>
@@ -135,8 +135,15 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900">Head Office</h3>
-                    <p className="text-gray-600">Soroco House</p>
-                    <p className="text-gray-600">Anna Nagar, Chennai, Tamil Nadu</p>
+                    <a 
+                      href="https://www.google.com/maps/search/?api=1&query=Soroco+House,+Anna+Nagar,+Chennai,+Tamil+Nadu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-amber-600 hover:text-amber-700 font-medium cursor-pointer no-underline"
+                    >
+                      <p className="text-gray-600">Soroco House</p>
+                      <p className="text-gray-600">Anna Nagar, Chennai, Tamil Nadu</p>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -148,8 +155,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900">Phone Numbers</h3>
-                    <p className="text-gray-600">Customer Support: +91 915 916 1110</p>
-                    <p className="text-gray-600">Franchise Inquiry: +91 915 916 1110</p>
+                    <p className="text-gray-600">Customer Support: <a href="tel:+919159161110" className="text-amber-600 hover:text-amber-700 font-medium underline relative z-30 pointer-events-auto cursor-pointer">+91 915 916 1110</a></p>
+                    <p className="text-gray-600">Franchise Inquiry: <a href="tel:+919159161110" className="text-amber-600 hover:text-amber-700 font-medium underline relative z-30 pointer-events-auto cursor-pointer">+91 915 916 1110</a></p>
                   </div>
                 </div>
               </div>
@@ -161,9 +168,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900">Email Addresses</h3>
-                    <p className="text-gray-600">General: <a href="mailto:reach@cuptime.in" className="text-amber-600 hover:text-amber-700 font-medium underline relative z-30 pointer-events-auto cursor-pointer">reach@cuptime.in</a></p>
-                    <p className="text-gray-600">Support: <a href="mailto:reach@cuptime.in" className="text-amber-600 hover:text-amber-700 font-medium underline relative z-30 pointer-events-auto cursor-pointer">reach@cuptime.in</a></p>
-                    <p className="text-gray-600">Franchise: <a href="mailto:franchise@cuptime.in" className="text-amber-600 hover:text-amber-700 font-medium underline relative z-30 pointer-events-auto cursor-pointer">franchise@cuptime.in</a></p>
+                    <p className="text-gray-600">General: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=reach@cuptime.in" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:text-amber-700 font-medium relative z-30 pointer-events-auto cursor-pointer">reach@withyoucoffee.in</a></p>
+                    <p className="text-gray-600">Support: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=reach@cuptime.in" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:text-amber-700 font-medium relative z-30 pointer-events-auto cursor-pointer">reach@withyoucoffee.in</a></p>
+                    <p className="text-gray-600">Franchise: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=franchise@withyoucoffee.in" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:text-amber-700 font-medium relative z-30 pointer-events-auto cursor-pointer">franchise@withyoucoffee.in</a></p>
                   </div>
                 </div>
               </div>
