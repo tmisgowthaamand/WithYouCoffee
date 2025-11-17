@@ -11,11 +11,17 @@ const app = express()
 // Configure CORS properly
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow localhost for development
-    if (!origin || origin.includes('localhost') || origin.includes('127.0.0.1')) {
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'http://127.0.0.1:5173',
+      'http://127.0.0.1:3000',
+      'https://with-you-coffee.vercel.app'
+    ]
+    
+    if (!origin || allowedOrigins.includes(origin)) {
       return callback(null, true)
     }
-    // Allow all origins in production (or specify your Vercel domain)
     callback(null, true)
   },
   credentials: true
