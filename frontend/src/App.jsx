@@ -20,6 +20,13 @@ import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import Delivery from './pages/Delivery'
 import Refund from './pages/Refund'
+import TimeSlottedDeliveries from './pages/TimeSlottedDeliveries'
+import InsulatedPackaging from './pages/InsulatedPackaging'
+import SubscriptionPlans from './pages/SubscriptionPlans'
+import BulkOrders from './pages/BulkOrders'
+import CorporateGifting from './pages/CorporateGifting'
+import Media from './pages/Media'
+import LoadingScreen from './components/LoadingScreen'
 import WhatsAppFloat from './components/WhatsAppFloat'
 
 function ScrollToTop({ children }) {
@@ -33,9 +40,18 @@ function ScrollToTop({ children }) {
 }
 
 export default function App() {
+  const [isLoading, setIsLoading] = React.useState(true)
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2000)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <ScrollToTop>
-      <Routes>
+    <>
+      <LoadingScreen isLoading={isLoading} />
+      <ScrollToTop>
+        <Routes>
         <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
       <Route path="/cart" element={<Cart />} />
@@ -56,8 +72,15 @@ export default function App() {
       <Route path="/terms" element={<Terms />} />
       <Route path="/delivery" element={<Delivery />} />
       <Route path="/refund" element={<Refund />} />
+      <Route path="/time-slotted-deliveries" element={<TimeSlottedDeliveries />} />
+      <Route path="/insulated-packaging" element={<InsulatedPackaging />} />
+      <Route path="/subscription-plans" element={<SubscriptionPlans />} />
+      <Route path="/bulk-orders" element={<BulkOrders />} />
+      <Route path="/corporate-gifting" element={<CorporateGifting />} />
+      <Route path="/media" element={<Media />} />
       </Routes>
-      <WhatsAppFloat />
-    </ScrollToTop>
+        <WhatsAppFloat />
+      </ScrollToTop>
+    </>
   )
 }

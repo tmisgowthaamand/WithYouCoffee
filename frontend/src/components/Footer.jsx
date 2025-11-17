@@ -97,11 +97,11 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="font-bold text-lg text-white">Office Solutions</h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li className="hover:text-amber-400 transition-colors cursor-pointer">Time-slotted deliveries</li>
-              <li className="hover:text-amber-400 transition-colors cursor-pointer">Insulated packaging</li>
-              <li className="hover:text-amber-400 transition-colors cursor-pointer">Subscription plans</li>
-              <li className="hover:text-amber-400 transition-colors cursor-pointer">Bulk orders</li>
-              <li className="hover:text-amber-400 transition-colors cursor-pointer">Corporate gifting</li>
+              <li><Link to="/time-slotted-deliveries" className="hover:text-amber-400 transition-colors">Time-slotted deliveries</Link></li>
+              <li><Link to="/insulated-packaging" className="hover:text-amber-400 transition-colors">Insulated packaging</Link></li>
+              <li><Link to="/subscription-plans" className="hover:text-amber-400 transition-colors">Subscription plans</Link></li>
+              <li><Link to="/bulk-orders" className="hover:text-amber-400 transition-colors">Bulk orders</Link></li>
+              <li><Link to="/corporate-gifting" className="hover:text-amber-400 transition-colors">Corporate gifting</Link></li>
             </ul>
           </div>
 
