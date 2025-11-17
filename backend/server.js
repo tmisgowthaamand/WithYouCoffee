@@ -3,8 +3,17 @@ const cors = require('cors')
 const { nanoid } = require('nanoid')
 const fs = require('fs')
 const path = require('path')
+const crypto = require('crypto')
+const Razorpay = require('razorpay')
 const products = require('./data/products.json')
 const supabase = require('./supabase')
+
+require('dotenv').config()
+
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID || 'rzp_test_placeholder',
+  key_secret: process.env.RAZORPAY_KEY_SECRET || 'secret_placeholder'
+})
 
 const app = express()
 
@@ -365,6 +374,66 @@ app.patch('/api/contact/:id', async (req, res) => {
       success: false, 
       message: 'Internal server error' 
     })
+  }
+})
+
+// --- Razorpay Payment Endpoints ---
+
+// Create Razorpay order for UPI payment
+app.post('/api/razorpay/create-order', async (req, res) => {
+  try {
+    const { amount, currency = 'INR', receipt, customerEmail, customerPhone } = req.body
+
+    if (!amount || amount <= 0) {
+      return res.status(400).json({ success: false, message: 'Invalid amount' })
+    }
+
+    const options = {
+      amount: Math.round(amount * 100),
+      currency,
+      receipt: receipt || `receipt_${nanoid(10)}`,
+      payment_capture: 1
+    }
+
+    const order = await razorpay.orders.create(options)
+
+    res.json({
+      success: true,
+      orderId: order.id,
+      amount: order.amount,
+      currency: order.currency
+    })
+  } catch (error) {
+    console.error('Razorpay order creation error:', error)
+    res.status(500).json({ success: false, message: 'Failed to create payment order' })
+  }
+})
+
+// Verify Razorpay payment
+app.post('/api/razorpay/verify-payment', async (req, res) => {
+  try {
+    const { razorpayOrderId, razorpayPaymentId, razorpaySignature } = req.body
+
+    if (!razorpayOrderId || !razorpayPaymentId || !razorpaySignature) {
+      return res.status(400).json({ success: false, message: 'Missing payment details' })
+    }
+
+    const body = razorpayOrderId + '|' + razorpayPaymentId
+    const expectedSignature = crypto
+      .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET || 'secret_placeholder')
+      .update(body)
+      .digest('hex')
+
+    const isSignatureValid = expectedSignature === razorpaySignature
+
+    if (!isSignatureValid) {
+      return res.status(400).json({ success: false, message: 'Payment verification failed' })
+    }
+
+    res.json({ success: true, message: 'Payment verified successfully' })
+  } catch (error) {
+    console.error('Razorpay verification error:', error)
+    res.status(500).json({ success: false, message: 'Payment verification error' })
   }
 })
 

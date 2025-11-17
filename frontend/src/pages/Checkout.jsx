@@ -46,70 +46,227 @@ export default function Checkout() {
     setIsProcessing(true)
 
     try {
-      // Simulate payment processing delay
-      await new Promise(resolve => setTimeout(resolve, 2000))
-
       const totalAtPaymentTime = finalTotal
 
-      // Create order payload for backend
-      const orderPayload = {
-        customerInfo,
-        items: cartItems,
-        subtotal: cartTotal,
-        gst: gstAmount,
-        total: totalAtPaymentTime,
-        paymentMethod
+      if (paymentMethod === 'upi') {
+        // Razorpay UPI Payment Flow
+        try {
+          // Step 1: Create Razorpay order on backend
+          const razorpayOrderResponse = await fetch(apiUrl('/api/razorpay/create-order'), {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              amount: totalAtPaymentTime,
+              currency: 'INR',
+              receipt: `order_${Date.now()}`,
+              customerEmail: customerInfo.email,
+              customerPhone: customerInfo.phone
+            })
+          })
+
+          if (!razorpayOrderResponse.ok) {
+            throw new Error('Failed to create Razorpay order')
+          }
+
+          const razorpayOrderData = await razorpayOrderResponse.json()
+
+          if (!razorpayOrderData.success) {
+            throw new Error('Razorpay order creation failed')
+          }
+
+          // Step 2: Load Razorpay script and open payment modal
+          const script = document.createElement('script')
+          script.src = 'https://checkout.razorpay.com/v1/checkout.js'
+          script.async = true
+          script.onload = () => {
+            const options = {
+              key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_placeholder',
+              amount: razorpayOrderData.amount,
+              currency: razorpayOrderData.currency,
+              order_id: razorpayOrderData.orderId,
+              name: 'With You Coffee',
+              description: `Order for ${customerInfo.name}`,
+              image: 'https://with-you-coffee.vercel.app/logo.png',
+              prefill: {
+                name: customerInfo.name,
+                email: customerInfo.email,
+                contact: customerInfo.phone
+              },
+              notes: {
+                address: customerInfo.address,
+                city: customerInfo.city,
+                pincode: customerInfo.pincode
+              },
+              theme: {
+                color: '#f59e0b'
+              },
+              method: {
+                upi: true,
+                card: false,
+                netbanking: false,
+                wallet: false
+              },
+              handler: async (response) => {
+                try {
+                  // Step 3: Verify payment on backend
+                  const verifyResponse = await fetch(apiUrl('/api/razorpay/verify-payment'), {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                      razorpayOrderId: response.razorpay_order_id,
+                      razorpayPaymentId: response.razorpay_payment_id,
+                      razorpaySignature: response.razorpay_signature
+                    })
+                  })
+
+                  const verifyData = await verifyResponse.json()
+
+                  if (!verifyData.success) {
+                    throw new Error('Payment verification failed')
+                  }
+
+                  // Step 4: Create order in database after successful payment
+                  const orderPayload = {
+                    customerInfo,
+                    items: cartItems,
+                    subtotal: cartTotal,
+                    gst: gstAmount,
+                    total: totalAtPaymentTime,
+                    paymentMethod: 'upi',
+                    razorpayPaymentId: response.razorpay_payment_id
+                  }
+
+                  const orderResponse = await fetch(apiUrl('/api/orders'), {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderPayload)
+                  })
+
+                  if (!orderResponse.ok) {
+                    throw new Error('Failed to create order')
+                  }
+
+                  const orderResult = await orderResponse.json()
+                  const backendId = orderResult?.order?.id || orderResult?.id || ''
+                  const displayCode = backendId ? `CT-${backendId}` : `CT-${Date.now()}`
+
+                  // Store in localStorage
+                  const localOrder = {
+                    id: backendId || displayCode,
+                    code: displayCode,
+                    customerInfo,
+                    items: cartItems,
+                    subtotal: cartTotal,
+                    gst: gstAmount,
+                    total: totalAtPaymentTime,
+                    paymentMethod: 'upi',
+                    razorpayPaymentId: response.razorpay_payment_id,
+                    status: 'confirmed',
+                    createdAt: new Date().toISOString()
+                  }
+
+                  try {
+                    const existing = JSON.parse(localStorage.getItem('cuptime_orders') || '[]')
+                    existing.push(localOrder)
+                    localStorage.setItem('cuptime_orders', JSON.stringify(existing))
+                  } catch (e) {
+                    console.error('Failed to save order to localStorage', e)
+                  }
+
+                  clearCart()
+                  setOrderId(backendId || displayCode)
+                  setOrderCode(displayCode)
+                  setPaidTotal(totalAtPaymentTime)
+                  setOrderPlaced(true)
+                  setIsProcessing(false)
+                } catch (error) {
+                  console.error('Payment verification error:', error)
+                  alert('Payment verification failed. Please contact support.')
+                  setIsProcessing(false)
+                }
+              },
+              modal: {
+                ondismiss: () => {
+                  console.log('Payment modal closed')
+                  setIsProcessing(false)
+                }
+              }
+            }
+
+            const rzp = new window.Razorpay(options)
+            rzp.open()
+          }
+          document.body.appendChild(script)
+        } catch (error) {
+          console.error('Razorpay payment error:', error)
+          alert('Payment initiation failed. Please try again.')
+          setIsProcessing(false)
+        }
+      } else {
+        // Other payment methods (existing logic)
+        await new Promise(resolve => setTimeout(resolve, 2000))
+
+        const orderPayload = {
+          customerInfo,
+          items: cartItems,
+          subtotal: cartTotal,
+          gst: gstAmount,
+          total: totalAtPaymentTime,
+          paymentMethod
+        }
+
+        const response = await fetch(apiUrl('/api/orders'), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(orderPayload)
+        })
+
+        if (!response.ok) {
+          throw new Error('Failed to create order')
+        }
+
+        const result = await response.json()
+        const backendId = result?.order?.id || result?.id || ''
+        const displayCode = backendId ? `CT-${backendId}` : `CT-${Date.now()}`
+
+        const localOrder = {
+          id: backendId || displayCode,
+          code: displayCode,
+          customerInfo,
+          items: cartItems,
+          subtotal: cartTotal,
+          gst: gstAmount,
+          total: totalAtPaymentTime,
+          paymentMethod,
+          status: 'confirmed',
+          createdAt: new Date().toISOString()
+        }
+        try {
+          const existing = JSON.parse(localStorage.getItem('cuptime_orders') || '[]')
+          existing.push(localOrder)
+          localStorage.setItem('cuptime_orders', JSON.stringify(existing))
+        } catch (e) {
+          console.error('Failed to save order to localStorage', e)
+        }
+
+        clearCart()
+        setOrderId(backendId || displayCode)
+        setOrderCode(displayCode)
+        setPaidTotal(totalAtPaymentTime)
+        setOrderPlaced(true)
+        setIsProcessing(false)
       }
-
-      const response = await fetch(apiUrl('/api/orders'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(orderPayload)
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to create order')
-      }
-
-      const result = await response.json()
-      // Prefer backend order.id; fall back to older { id } format if present
-      const backendId = result?.order?.id || result?.id || ''
-      const displayCode = backendId ? `CT-${backendId}` : `CT-${Date.now()}`
-
-      // Also store a copy in localStorage so admin can read orders
-      const localOrder = {
-        id: backendId || displayCode,
-        code: displayCode,
-        customerInfo,
-        items: cartItems,
-        subtotal: cartTotal,
-        gst: gstAmount,
-        total: totalAtPaymentTime,
-        paymentMethod,
-        status: 'confirmed',
-        createdAt: new Date().toISOString()
-      }
-      try {
-        const existing = JSON.parse(localStorage.getItem('cuptime_orders') || '[]')
-        existing.push(localOrder)
-        localStorage.setItem('cuptime_orders', JSON.stringify(existing))
-      } catch (e) {
-        console.error('Failed to save order to localStorage', e)
-      }
-
-      // Clear cart and show success
-      clearCart()
-      setOrderId(backendId || displayCode)
-      setOrderCode(displayCode)
-      setPaidTotal(totalAtPaymentTime)
-      setOrderPlaced(true)
-      
     } catch (error) {
       console.error('Payment error:', error)
       alert('Payment failed. Please try again.')
-    } finally {
       setIsProcessing(false)
     }
   }
