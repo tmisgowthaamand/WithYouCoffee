@@ -130,7 +130,7 @@ export default function Cart() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-6">
-              {cartItems.map((item) => (
+              {Array.isArray(cartItems) && cartItems.map((item) => (
                 <div key={item.id} className="bg-white rounded-2xl shadow-sm p-6 border border-gray-100 relative">
                   <div className="flex items-start gap-6">
                     {/* Product Image */}

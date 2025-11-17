@@ -22,7 +22,8 @@ export default function Admin() {
       const data = await response.json()
       
       if (data.success) {
-        setContactRequests(data.requests)
+        // Ensure data.requests is an array
+        setContactRequests(Array.isArray(data.requests) ? data.requests : [])
       } else {
         setError('Failed to fetch contact requests')
       }
@@ -212,7 +213,7 @@ export default function Admin() {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {contactRequests.map((request) => (
+                    {Array.isArray(contactRequests) && contactRequests.map((request) => (
                       <tr key={request.id} className="hover:bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm font-medium text-gray-900">{request.name}</div>
@@ -290,7 +291,7 @@ export default function Admin() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {orders.map((order) => (
+                  {Array.isArray(orders) && orders.map((order) => (
                     <tr key={order.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         <div className="font-medium">{order.id}</div>
@@ -303,7 +304,7 @@ export default function Admin() {
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-900">
                         <ul className="text-xs list-disc list-inside space-y-1 max-w-xs">
-                          {order.items?.map((item) => (
+                          {Array.isArray(order.items) && order.items.map((item) => (
                             <li key={item.id}>{item.name} × {item.quantity}</li>
                           ))}
                         </ul>

@@ -20,6 +20,7 @@ import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import Delivery from './pages/Delivery'
 import Refund from './pages/Refund'
+import WhatsAppFloat from './components/WhatsAppFloat'
 
 function ScrollToTop({ children }) {
   const location = useLocation()
@@ -56,6 +57,7 @@ export default function App() {
       <Route path="/delivery" element={<Delivery />} />
       <Route path="/refund" element={<Refund />} />
       </Routes>
+      <WhatsAppFloat />
     </ScrollToTop>
   )
 }

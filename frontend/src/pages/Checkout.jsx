@@ -407,7 +407,7 @@ export default function Checkout() {
               
               {/* Items */}
               <div className="space-y-3 mb-6">
-                {cartItems.map((item) => (
+                {Array.isArray(cartItems) && cartItems.map((item) => (
                   <div key={item.id} className="flex justify-between items-center">
                     <div className="flex-1">
                       <div className="font-medium text-sm">{item.name}</div>

@@ -219,7 +219,7 @@ export default function Header() {
                     <>
                       {/* Cart Items List */}
                       <div className="space-y-4 max-h-64 overflow-y-auto">
-                        {cartItems.map((item, index) => (
+                        {Array.isArray(cartItems) && cartItems.map((item, index) => (
                           <div key={item.id} className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 animate-slideInScale" style={{animationDelay: `${index * 0.1}s`}}>
                             {/* Product Image */}
                             <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center flex-shrink-0 overflow-hidden">

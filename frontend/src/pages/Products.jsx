@@ -12,7 +12,11 @@ export default function Products() {
 
   useEffect(() => {
     axios.get(apiUrl('/api/products'))
-      .then(res => setProducts(res.data))
+      .then(res => {
+        // Ensure res.data is an array
+        const data = res.data
+        setProducts(Array.isArray(data) ? data : [])
+      })
       .catch(() => setProducts([]))
   }, [])
 
@@ -51,7 +55,7 @@ export default function Products() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Products Grid - Clean 4 Column Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((p, index) => (
+          {Array.isArray(products) && products.map((p, index) => (
             <div key={p.id}>
               <ProductCard product={p} onAdd={handleAdd} />
             </div>

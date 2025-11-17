@@ -67,6 +67,11 @@ async function fetchOrdersFromSupabase() {
 function aggregateByDayAndProduct(orders) {
   const aggregated = {}
 
+  // Ensure orders is an array
+  if (!Array.isArray(orders)) {
+    return []
+  }
+
   orders.forEach((order) => {
     const dateKey = (order.createdAt || '').slice(0, 10) // YYYY-MM-DD
     if (!dateKey) return
@@ -201,7 +206,7 @@ export default function SalesReport() {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((row, idx) => (
+                {Array.isArray(rows) && rows.map((row, idx) => (
                   <tr
                     key={`${row.date}-${row.productId}-${idx}`}
                     className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}

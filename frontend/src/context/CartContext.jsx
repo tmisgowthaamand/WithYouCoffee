@@ -53,7 +53,7 @@ const cartReducer = (state, action) => {
     case 'LOAD_CART':
       return {
         ...state,
-        items: action.payload || []
+        items: Array.isArray(action.payload) ? action.payload : []
       }
 
     default:
@@ -63,7 +63,7 @@ const cartReducer = (state, action) => {
 
 // Initial state
 const initialState = {
-  items: []
+  items: [] // Always ensure items is an array
 }
 
 // Cart Provider Component
@@ -74,7 +74,14 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     const savedCart = localStorage.getItem('cuptime_cart')
     if (savedCart) {
-      dispatch({ type: 'LOAD_CART', payload: JSON.parse(savedCart) })
+      try {
+        const parsed = JSON.parse(savedCart)
+        // Ensure parsed data is an array
+        dispatch({ type: 'LOAD_CART', payload: Array.isArray(parsed) ? parsed : [] })
+      } catch (error) {
+        console.error('Error parsing cart from localStorage:', error)
+        dispatch({ type: 'LOAD_CART', payload: [] })
+      }
     }
   }, [])
 

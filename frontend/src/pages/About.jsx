@@ -657,7 +657,13 @@ export default function About() {
             <div className="space-y-6">
               {/* Map */}
               <div className="bg-white rounded-2xl p-4 shadow-lg animate-slideInScale stagger-2">
-                <div className="w-full h-64 bg-gray-200 rounded-lg overflow-hidden">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Soroco+House,+Anna+Nagar,+Chennai,+Tamil+Nadu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full h-64 bg-gray-200 rounded-lg overflow-hidden relative group cursor-pointer"
+                  title="Click to open in Google Maps"
+                >
                   <iframe
                     src={contactInfo.mapUrl}
                     width="100%"
@@ -667,8 +673,18 @@ export default function About() {
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title={`${contactInfo.businessName} Location`}
+                    className="pointer-events-none"
                   ></iframe>
-                </div>
+                  {/* Overlay with click instruction */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 px-4 py-2 rounded-lg shadow-lg text-sm font-medium text-gray-800 flex items-center gap-2">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      Click to open in Google Maps
+                    </div>
+                  </div>
+                </a>
               </div>
 
               {/* Contact Information */}
@@ -687,35 +703,38 @@ export default function About() {
                   </p>
                   <p>
                     <strong>For Franchise Enquiry:</strong><br />
-                    <a href={`mailto:${contactInfo.emails.franchise}`} className="text-red-500 hover:text-red-600">
+                    <a 
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactInfo.emails.franchise)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-red-500 hover:text-red-600 transition-colors"
+                    >
                       {contactInfo.emails.franchise}
                     </a>
                   </p>
                   <p>
                     <strong>For order and other Enquiry:</strong><br />
-                    <a href={`mailto:${contactInfo.emails.general}`} className="text-red-500 hover:text-red-600">
+                    <a 
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactInfo.emails.general)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-red-500 hover:text-red-600 transition-colors"
+                    >
                       {contactInfo.emails.general}
                     </a>
                   </p>
                   <p>
                     <strong>Phone:</strong><br />
-                    <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="text-red-500 hover:text-red-600">
+                    <a 
+                      href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
+                      className="text-red-500 hover:text-red-600 transition-colors"
+                    >
                       {contactInfo.phone}
                     </a>
                   </p>
                 </div>
               </div>
 
-              {/* WhatsApp Chat Widget */}
-              <div className="bg-green-500 text-white rounded-2xl p-4 shadow-lg animate-slideInScale stagger-4 hover:bg-green-600 transition-colors cursor-pointer">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h5 className="font-semibold">We're Online!</h5>
-                    <p className="text-sm opacity-90">How may I help you today?</p>
-                  </div>
-                  <div className="text-2xl">💬</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
